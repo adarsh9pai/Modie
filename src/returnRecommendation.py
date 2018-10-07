@@ -10,6 +10,12 @@ from tmdbv3api import TMDb, Movie, Discover
 import os
 from werkzeug.utils import secure_filename
 from flask_uploads import UploadSet, configure_uploads, IMAGES
+from io import open
+import http
+from urlparse import urlparse
+import urllib
+import http.client
+from pprint import pprint
 
 app = Flask(__name__)
 api = Api(app)
@@ -57,24 +63,35 @@ def returnValue(mood):
     Pick = GenreList[0]
     GenreID = GenreMap[Pick]
     returnMovie(GenreID)
-    print MovieDetails
+    #print MovieDetails
     return jsonify(MovieDetails)
 
 
-subscription_key = '93b53ddd481b41cd99828474e9c1327c'
-assert subscription_key
-emotion_recognition_url = "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize"
-headers = {'Ocp-Apim-Subscription-Key': subscription_key }
-
 @app.route('/uploadImage', methods = ['POST'])
 def upload():
+    subscription_key = '93b53ddd481b41cd99828474e9c1327c'
+
     f = request.files['file']
     f.save(secure_filename(f.filename))
-    #url = '127.0.0.1/uploads/'+f.filename
-    image_path = (f.filename)
-    image_data = ''
-    with open(image_path, 'rb') as f:
-        image_data = f.read()
-    response = requests.post(emotion_recognition_url, headers=headers, json=image_data)
-    analysis = response.json()
-    print analysis
+    face_api_url = 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect'
+
+# Set image_url to the URL of an image that you want to analyze.
+    image =  open(f.filename, 'rb')
+    headers = {
+        'Content-Type': 'application/octet-stream',
+        'Ocp-Apim-Subscription-Key': subscription_key
+        }
+    params = urllib.urlencode({
+        'returnFaceId': 'true',
+        'returnFaceLandmarks': 'false',
+        'returnFaceAttributes': 'emotion'
+    })
+    response = requests.post(face_api_url, params=params, headers=headers,data = image)
+    response = response.json()[0]["faceAttributes"]["emotion"]
+    response = dict(response)
+    maximumEmotion = max(response, key=response.get)
+    print maximumEmotion
+    
+    
+
+    return redirect('http://localhost:5000/getValue/'+maximumEmotion)
