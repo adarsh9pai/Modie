@@ -39,6 +39,7 @@ body {
 	padding: 50px;
 	height: 125px;
 	background-color: #ffffff;
+	border-radius: 15px;
 }
 
 #container2 {
@@ -50,6 +51,7 @@ body {
 	padding: 50px;
 	height: 325px;
 	background-color: #ffffff;
+	border-radius: 15px;
 
 p {
 	color: #c84242;
