@@ -37,7 +37,7 @@ body {
 	margin-bottom: auto;
 	width: 400px;
 	padding: 50px;
-	height: 125px;
+	min-height: 125px;
 	background-color: #ffffff;
 	border-radius: 15px;
 }
@@ -46,10 +46,7 @@ body {
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: auto;
-	margin-bottom: auto;
 	width: 400px;
-	padding: 50px;
-	height: 325px;
 	background-color: #ffffff;
 	border-radius: 15px;
 

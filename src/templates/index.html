@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" href="stylesheet.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
 	<head>
 		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 	</head>
@@ -19,7 +19,7 @@
 						font-weight: bold;
 					}
 				</style>
-				<p>UPLOAD A PHOTO OF YOUR FACE!</p>
+				<p>Upload a picture of your face</p>
 			</div>
 			<div id="form">
 				<form action = "http://localhost:5000/uploadImage" method = "POST" enctype = "multipart/form-data">
