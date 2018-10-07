@@ -2,6 +2,34 @@
 	padding: 150px;
 }
 
+#header2 {
+	padding: 80px;
+}
+
+ html {
+    padding: 0;
+
+}
+body {
+	background-size: cover;
+	background-position: center;
+	width: 100vw;
+	height: 100vh;
+	margin: 0;
+}
+
+#main {
+	background-image: url("webappbackground.png");
+}
+
+#result {
+	background-image: url("resultbackground.png");
+}
+
+#script {
+	
+}
+
 #container {
 	margin-left: auto;
 	margin-right: auto;
@@ -13,18 +41,28 @@
 	background-color: #ffffff;
 }
 
+#container2 {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+	margin-bottom: auto;
+	width: 400px;
+	padding: 50px;
+	height: 325px;
+	background-color: #ffffff;
+
 p {
 	color: #c84242;
 }
 
 #instruct {
-	font-family: helvetica, ariel;
+	font-family: 'Roboto', sans-serif;
 	font-size: 22px;
 	text-align: center;
 	font-weight: bold;
 }
 
 #form {
-	font-family: helvetica, ariel;
+	font-family: 'Roboto', sans-serif;
 	text-align: center;
 }
