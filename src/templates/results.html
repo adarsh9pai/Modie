@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html lang = "en">
 	<head>
-		<title>
-			What Modie Recommends
-		</title>
-
-		<!-- Latest compiled and minified CSS -->
+		<title>What Modie Recommends</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-		<!-- Latest compiled and minified JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 	</head>
-
+	<body style = "width: 100vw; height: 100vh; overflow-y:hidden">
+	<div class = "row" style = "background:#c84242">
+		<div class = "col-md-3" style = "height:100vh;"><img src ="{{moviedetails.PosterPath}}" /></div>
+		<div class = "col-md-9" style = "margin-left:50vw; color: white;">
+			<div id = "MovieDetails">
+				<h2>{{moviedetails.Title}}</h1>
+				<h6><strong>Average Vote:</strong>{{moviedetails.AverageVote}} <strong>Release:</strong> {{moviedetails.ReleaseDate}}</h6>
+				<h3>
+					{{moviedetails.Overview}}
+				</h3>	
+			</div>
+		</div>
+	</div>
+</body>
 </html>

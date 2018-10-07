@@ -44,12 +44,11 @@ def returnMovie(GenreID):
     '''
     index = randint(1,10)
     response = requests.get('https://api.themoviedb.org/3/discover/movie?api_key=' +  APIKeyv3Auth + '&primary_release_year=2017&sort_by=revenue.desc&with_genres='+str(GenreID))
-    MovieDetails["PosterPath"] = 'http://image.tmdb.org/t/p/w200/'+(response.json()['results'][index]["poster_path"])
+    MovieDetails["PosterPath"] = 'http://image.tmdb.org/t/p/w500/'+(response.json()['results'][index]["poster_path"])
     MovieDetails["Title"] = (response.json()['results'][index]["title"])
     MovieDetails["Overview"] = (response.json()['results'][index]["overview"])
     MovieDetails["ReleaseDate"] = (response.json()['results'][index]["release_date"])
     MovieDetails["AverageVote"] = (response.json()['results'][index]["vote_average"])
-    return render_template("results.html",moviedetails = MovieDetails)
 
 @app.route('/')
 def home():
@@ -66,7 +65,7 @@ def returnValue(mood):
     MovieDetails["Feeling"] = RecognizedMood
     #print MovieDetails
     return render_template("results.html",moviedetails = MovieDetails)
-    return jsonify(MovieDetails)
+    #return jsonify(MovieDetails)
 
 
 @app.route('/uploadImage', methods = ['POST'])
